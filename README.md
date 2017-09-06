@@ -153,5 +153,32 @@ with open('price_list.txt', 'r') as f:
 
 ### 3. What is the output of this program?
 
+
+```python
+assignment_1.run()
+```
+Output:
+    3307228.119047619
+
+
+
 ### 4. Describe in natural language and line-by-line what the program is doing. Describe also for each line what the Python code expresses.
+
+
+**def run():**
+    file_url = 'https://raw.githubusercontent.com/datsoftlyngby/' \
+               'soft2017fall-business-intelligence-teaching-material/master/' \
+               'assignments/assignment_1/price_list.txt'
+    txt_file_name = os.path.basename(file_url)
+    txt_path = os.path.join('./', txt_file_name)
+    download_txt(file_url, txt_path)
+    csv_file_name = 'price_list.csv'
+    csv_path = os.path.join(os.getcwd(), csv_file_name)
+    generate_csv(txt_path, csv_path)
+    data = read_prices(csv_path)
+    avg_price = compute_avg_price(data)
+    print(avg_price)
+    generate_plot(data)
+
+
 
