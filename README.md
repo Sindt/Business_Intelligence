@@ -159,7 +159,8 @@ assignment_1.run()
 ```
 Output:
     3307228.119047619
-
+    
+<p>Output'et er en udregnet gennemsnitspris af de solgte boliger i KBH K</p>
 
 
 ### 4. Describe in natural language and line-by-line what the program is doing. Describe also for each line what the Python code expresses.
