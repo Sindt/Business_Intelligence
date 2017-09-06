@@ -1,6 +1,6 @@
 # Business_Intelligence
 
-
+IN:
 ```python
 import assignment_1
 import os
@@ -10,8 +10,7 @@ assignment_1.run()
 os.listdir()
 ```
 
-
-
+Output:
 
     ['.ipynb_checkpoints',
      'Assignment 1.ipynb',
