@@ -27,3 +27,8 @@ Output:
 New files: **'prices.png',
      'price_list.csv',
      'price_list.txt',**
+
+
+### 2. Describe which types of files this program generates and attach the contents of each file together with its name to your solution:
+
+IN:
