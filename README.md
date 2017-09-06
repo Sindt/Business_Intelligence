@@ -18,9 +18,9 @@ Output:
     ['.ipynb_checkpoints',
      'Assignment 1.ipynb',
      'assignment_1.py',
-     'prices.png',
-     'price_list.csv',
-     'price_list.txt',
+     **'prices.png',**
+     **'price_list.csv',**
+     **'price_list.txt',**
      'README.md',
      '__pycache__']
 
