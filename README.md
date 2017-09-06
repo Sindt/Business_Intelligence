@@ -151,4 +151,7 @@ with open('price_list.txt', 'r') as f:
     
 
 
+##3. What is the output of this program?
+
+##4. Describe in natural language and line-by-line what the program is doing. Describe also for each line what the Python code expresses.
 
