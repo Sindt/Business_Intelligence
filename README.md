@@ -1,8 +1,8 @@
 # Business_Intelligence
-<h1>Assignment 1: Environment Setup and Introduction to Python</h1>
+# Assignment 1: Environment Setup and Introduction to Python
 
 
-<h2>1. List the all files that this program generates:</h2>
+### 1. List the all files that this program generates:
 IN:
 ```python
 import assignment_1
