@@ -1,5 +1,5 @@
 # Business_Intelligence
-# Assignment 1: Environment Setup and Introduction to Python
+## Assignment 1: Environment Setup and Introduction to Python
 
 
 ### 1. List the all files that this program generates:
