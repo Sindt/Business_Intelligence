@@ -32,7 +32,7 @@ New files: **'prices.png',
 ### 2. Describe which types of files this program generates and attach the contents of each file together with its name to your solution:
 
 **Type: .PNG
-NAME: prices.png
+NAME: prices.png**
 
 ```python
 with open('prices.png', 'rb') as f:
@@ -44,7 +44,7 @@ with open('prices.png', 'rb') as f:
     
    
 **Type: .CSV
-NAME: price_list.csv
+NAME: price_list.csv**
 
 ```python
 with open('price_list.csv', 'r') as f:
@@ -98,7 +98,7 @@ with open('price_list.csv', 'r') as f:
     
 
 **Type: .TXT
-NAME: price_list.txt
+NAME: price_list.txt**
 
 ```python
 with open('price_list.txt', 'r') as f:
