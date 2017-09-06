@@ -31,4 +31,16 @@ New files: **'prices.png',
 
 ### 2. Describe which types of files this program generates and attach the contents of each file together with its name to your solution:
 
+Type: .PNG
+NAME: prices.png
+
 IN:
+```python
+with open('prices.png', 'rb') as f:
+    pngdata = f.read()
+    print(len(pngdata))
+```
+
+Output:
+    21862
+
