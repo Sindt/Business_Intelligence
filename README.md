@@ -166,21 +166,27 @@ Output:
 ### 4. Describe in natural language and line-by-line what the program is doing. Describe also for each line what the Python code expresses.
 
 ```python
-**def run():**
-    file_url = 'https://raw.githubusercontent.com/datsoftlyngby/' \
+def run():
+1:    file_url = 'https://raw.githubusercontent.com/datsoftlyngby/' \
                'soft2017fall-business-intelligence-teaching-material/master/' \
                'assignments/assignment_1/price_list.txt'
-    txt_file_name = os.path.basename(file_url)
-    txt_path = os.path.join('./', txt_file_name)
-    download_txt(file_url, txt_path)
-    csv_file_name = 'price_list.csv'
-    csv_path = os.path.join(os.getcwd(), csv_file_name)
-    generate_csv(txt_path, csv_path)
-    data = read_prices(csv_path)
-    avg_price = compute_avg_price(data)
-    print(avg_price)
-    generate_plot(data)
+2:  txt_file_name = os.path.basename(file_url)
+3:  txt_path = os.path.join('./', txt_file_name)
+4:  download_txt(file_url, txt_path)
+5:  csv_file_name = 'price_list.csv'
+6:  csv_path = os.path.join(os.getcwd(), csv_file_name)
+7:  generate_csv(txt_path, csv_path)
+8:  data = read_prices(csv_path)
+9:  avg_price = compute_avg_price(data)
+10: print(avg_price)
+11: generate_plot(data)
     ```
 
+1: Assignment af variable, som indeholder URL til price_list.txt fil.
+2: Metode kald, som bruges til at hente navnet på filen, og assigne det i en variable.
+3: Metode kald, for at lave en sti til filen som blev gemt i variablen. Dette bliver assignet til en ny variable.
+4: Kald af metode download_txt(), som tager to argumenter. Metoden downloader filen fra url'en og gemmer den i stien.
+5: Assignment af variable.
+6: Samme som nr. 3, denne gang er det stien til "current working directory", og navnet på csv. filen.
 
 
