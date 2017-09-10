@@ -189,10 +189,13 @@ def run():
 5: Assignment af variable.
 6: Samme som nr. 3, denne gang er det stien til "current working directory", og navnet på csv. filen.
 7: Kald af metode generate_cvs(), som tager to argumenter. Metoden genere en csv fil dannet af indholdet af txt filen.
-8: Kald af metode, read_price som tager et argument. Metoden læser boligpriserne fra csv filen og assigner dem i en data variable.
-9: Kald af metode, avg_price som tager et argument. Metoden udregner gns. pris ved hjælp af data variablen, som indeholder priserne.
+8: Kald af metode, read_price som tager et argument. Metoden læser boligpriserne fra csv filen og assigner dem
+   i en data variable.
+9: Kald af metode, avg_price som tager et argument. Metoden udregner gns. pris ved hjælp af data variablen,
+   som indeholder priserne.
 10: Udskriver gns. pris.
-11: Kald af metode generate_plot, som taget et argument. Metoden genere en png fil som bruges til graf over gns. priserne.
+11: Kald af metode generate_plot, som taget et argument. Metoden genere en png fil som bruges til graf over
+    gns. priserne.
 
 
 
