@@ -29,6 +29,7 @@ New files: **'prices.png',
      'price_list.txt',**
 
 
+
 ### 2. Describe which types of files this program generates and attach the contents of each file together with its name to your solution:
 
 **Type: .PNG
@@ -151,6 +152,7 @@ with open('price_list.txt', 'r') as f:
     
 
 
+
 ### 3. What is the output of this program?
 
 
@@ -161,6 +163,8 @@ Output:
     3307228.119047619
     
 <p>Output'et er en udregnet gennemsnitspris af de solgte boliger i KBH K</p>
+
+
 
 
 ### 4. Describe in natural language and line-by-line what the program is doing. Describe also for each line what the Python code expresses.
