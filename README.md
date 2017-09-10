@@ -165,7 +165,7 @@ Output:
 
 ### 4. Describe in natural language and line-by-line what the program is doing. Describe also for each line what the Python code expresses.
 
-
+```python
 **def run():**
     file_url = 'https://raw.githubusercontent.com/datsoftlyngby/' \
                'soft2017fall-business-intelligence-teaching-material/master/' \
@@ -180,6 +180,7 @@ Output:
     avg_price = compute_avg_price(data)
     print(avg_price)
     generate_plot(data)
+    ```
 
 
 
