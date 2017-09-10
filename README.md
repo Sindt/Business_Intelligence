@@ -1,4 +1,6 @@
 # Business_Intelligence
+#### Gruppe: Kasper Olesen, Kasper Pontoppidan & Christian Sindt
+
 ## Assignment 1: Environment Setup and Introduction to Python
 
 
