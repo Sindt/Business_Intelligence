@@ -21,47 +21,24 @@ rows = table_body.find('table').find('tbody').find_all('tr')
 
 for row in rows:
     cols = row.find_all('td')
-    address_str = cols[0].text.strip()
-    street_str = ' '.join(address_str.split(' ')[:-3])
-    city_str = ' '.join(address_str.split(' ')[-3:])
-    try:
-        zip_number = int(address_str.split(' ')[-3])
-    except ValueError:
-         zip_number = 'ERROR'
-        # Decode number of rooms
-    no_rooms_str = cols[1].text.strip()
+    
+    address = cols[0].find('a')
+        
+    address_str = str(address).replace("<br/>", ">").split('>')
+        # WORKS
+    street_str = address_str[1]
+    zip_code = address_str[2].replace("</a", " ")
     
     try:
-        no_rooms = int(no_rooms_str)
+        price = int(cols[1].text)
     except ValueError:
-        no_rooms = 'ERROR'
-        # Decode selling date and type
-    size_in_sq_m_str = 'ERROR'
-    try:
-        size_in_sq_m = int(size_in_sq_m_str)
-    except ValueError:
-        size_in_sq_m = 'ERROR'
-        
-        # Decode year of construction
-    year_of_construction_str = cols[3].text.strip()
-    try:
-        year_of_construction = int(year_of_construction_str)
-    except ValueError:
-        year_of_construction = 'ERROR'
-        # Decode price
-    price_str = cols[4].text.strip()
-    price = float(price_str)   
+        try:
+            price = cols[1].text
+        except ValueError:
+            price = 'ERROR'
 
-        # Decode sales date
-    sale_date_str = cols[5].text.strip()
-
-    decoded_row = (street_str, city_str, zip_number, no_rooms,
-                       size_in_sq_m, year_of_construction, price, 
-                       sale_date_str)
+    decoded_row = (street_str, zip_code, price)
     data.append(decoded_row)
     
-    print('Scraped {} sales...'.format(len(data)))
-    
-print(data[15])
-
+print(data[10])
 
