@@ -12,7 +12,7 @@ IN:
 ```shell
 $ find . -name '*.csv' | xargs wc -l
 
-```
+
 
 Output:
 1050-1549.csv 6233.0
@@ -607,7 +607,7 @@ Output:
 9981.csv 741.0
 9982.csv 1404.0
 9990.csv 3258.0
-
+```
 
 
 How many sales records are there in total:
