@@ -616,9 +616,11 @@ IN:
 ```shell
 $ find . -name '*.csv' | xargs wc -l
 
+Output:
+1277606
+
 ```
 
-Output:
 
 
 
