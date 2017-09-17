@@ -4,8 +4,18 @@
 
 ### Solutions:
 
+
 #### 3. Count the amount of scraped housing data sales records from your CSV files.
 How many sales records are there per zip code area:
+
+IN:
+```shell
+$ find . -name '*.csv' | xargs wc -l
+
+```
+
+Output:
+
 
 How many sales records are there in total:
 
