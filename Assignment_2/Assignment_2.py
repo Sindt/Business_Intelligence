@@ -73,7 +73,7 @@ class Scraper:
 class Main:
     
     host = 'http://138.197.184.35/boliga/'
-    htmls = ['2650_39.html']
+    htmls = ['2650_38.html']
     
     def save_to_csv(data, path):
     
