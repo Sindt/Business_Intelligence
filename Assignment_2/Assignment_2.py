@@ -12,7 +12,7 @@ class Scraper:
     def __init__(self, url):
         self.url = url
         
-    def parseToInt(text):
+    def parseToInt(self, text):
         try:
             return int(text)
         except ValueError:
@@ -38,7 +38,7 @@ class Scraper:
     
             zip_code = address_str[2].replace("</a", "")
     
-            price = parseToInt(cols[1].text.replace(".", ""))    
+            price = self.parseToInt(cols[1].text.replace(".", ""))    
                 
             cols_sell = str(cols[2]).replace("<br/>", ">").split('>')
     
@@ -46,15 +46,15 @@ class Scraper:
     
             sell_type = cols_sell[3].replace("</h5", "")
     
-            price_per_sq_m = parseToInt(cols[3].text.replace(".",""))
+            price_per_sq_m = self.parseToInt(cols[3].text.replace(".",""))
     
-            no_rooms = parseToInt(cols[4].text)
+            no_rooms = self.parseToInt(cols[4].text)
         
             housing_type = cols[5].text
     
-            size_in_sq_m = parseToInt(cols[6].text)
+            size_in_sq_m = self.parseToInt(cols[6].text)
     
-            year_of_contruction = parseToInt(cols[7].text)   
+            year_of_contruction = self.parseToInt(cols[7].text)   
     
             price_change_in_pct = cols[8].text.replace("\n", "").strip()
     
@@ -67,11 +67,8 @@ class Scraper:
         print(data[37])
    
     
-class main:
+class Main:
     scraper = Scraper('http://138.197.184.35/boliga/2650_38.html')
     
     scraper.scrape()
-
-
-
-
+    
