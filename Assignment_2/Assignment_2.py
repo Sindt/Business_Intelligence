@@ -6,6 +6,8 @@
 import bs4
 import requests
 from IPython.display import IFrame
+import csv
+import os
 
 class Scraper:
     
@@ -65,10 +67,34 @@ class Scraper:
         print(data[1])
         print(data[10])
         print(data[37])
-   
+        
+        return data;
     
 class Main:
-    scraper = Scraper('http://138.197.184.35/boliga/2650_38.html')
     
-    scraper.scrape()
+    host = 'http://138.197.184.35/boliga/'
+    htmls = ['2650_39.html']
+    
+    def save_to_csv(data, path):
+    
+        with open(path, 'w', encoding='utf-8') as output_file:
+            output_writer = csv.writer(output_file)
+            output_writer.writerow(['street_str', 'zip_code', 'price', 'sell_date','sell_type', 'price_per_sq_m', 'no_rooms',
+                                   'housing_type', 'size_in_sq_m', 'year_of_contruction', 'price_change_in_pct'])
+
+            for row in data:
+                output_writer.writerow(row)
+               
+    
+    
+    out_dir = './out'
+    if not os.path.exists(out_dir):
+        os.mkdir(out_dir)
+    
+    for html in htmls:
+        url = os.path.join(host, html)
+        scraper = Scraper(url)
+        data = scraper.scrape()   
+        save_to_file = os.path.join(out_dir, os.path.basename(html).split('_')[0] + '.csv')
+        save_to_csv(data, save_to_file) 
     
