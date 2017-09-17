@@ -5,7 +5,6 @@
 
 import bs4
 import requests
-from IPython.display import IFrame
 import csv
 import os
 
@@ -23,7 +22,6 @@ class Scraper:
     def scrape(self):
         data = []
         
-        IFrame(self.url, width=700, height=400)
         
         r = requests.get(self.url)
         soup = bs4.BeautifulSoup(r.content.decode('utf-8'), 'html5lib')
@@ -68,9 +66,29 @@ class Scraper:
     
 class Main:
     
+    def getHtmls(host):
+        
+        htmlList = []
+        
+        r = requests.get(host)
+        soup = bs4.BeautifulSoup(r.content.decode('utf-8'), 'html5lib')
+
+        table_body = soup.find('body')
+        rows = table_body.find('table').find('tbody').find_all('tr')
+        
+        for row in rows:
+            cols = row.find_all('td')
+            if len(cols) > 1:
+                if ".html" in cols[1].text:
+                    htmlList.append(cols[1].text)
+                
+        
+        return htmlList
+      
     host = 'http://138.197.184.35/boliga/'
-    htmls = ['2000_1.html','2650_38.html','2650_39.html']
-    
+    htmls = getHtmls(host)
+   # htmls = [htmls2[1],htmls2[111],htmls2[32217]]
+
     def save_to_csv(data, path):
     
         if os.path.exists(path):
@@ -86,7 +104,8 @@ class Main:
 
                 for row in data:
                     output_writer.writerow(row)
-           
+    
+    
     out_dir = './out'
     if not os.path.exists(out_dir):
         os.mkdir(out_dir)
@@ -96,5 +115,5 @@ class Main:
         scraper = Scraper(url)
         data = scraper.scrape()   
         save_to_file = os.path.join(out_dir, os.path.basename(html).split('_')[0] + '.csv')
-        save_to_csv(data, save_to_file)
+        save_to_csv(data, save_to_file) 
     
