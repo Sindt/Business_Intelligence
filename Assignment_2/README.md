@@ -625,17 +625,23 @@ Output:
 
 
 #### 4. Provide some more statistics, with the help of Bash commands.
-For which zip code area do you have the most sales records:
+
+**For which zip code area do you have the most sales records?**
 
   How many sales records:
+  Der er solgt flest i 2300 med 17406
   
   How big is the corresponding CSV file in kilobytes:
+  Filen fylder 1717 kb
   
-For which zip code area do you have the fewest sales records:
+**For which zip code area do you have the fewest sales records?**
 
   How many sales records:
+  Der er solgt færrest i 7270 med 134
   
   How big is the corresponding CSV file in megabytes:
+  Filen fylder  11 kb
+  
 
 ## Documentation/How To:
 Run the Assignment_2.py 
