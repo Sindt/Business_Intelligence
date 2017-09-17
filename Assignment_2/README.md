@@ -19,6 +19,14 @@ Output:
 
 How many sales records are there in total:
 
+IN:
+```shell
+$ find . -name '*.csv' | xargs wc -l
+
+```
+
+Output:
+
 
 #### 4. Provide some more statistics, with the help of Bash commands.
 For which zip code area do you have the most sales records:
