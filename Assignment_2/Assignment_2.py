@@ -87,7 +87,6 @@ class Main:
       
     host = 'http://138.197.184.35/boliga/'
     htmls = getHtmls(host)
-   # htmls = [htmls2[1],htmls2[111],htmls2[32217]]
 
     def save_to_csv(data, path):
     
