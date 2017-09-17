@@ -63,30 +63,30 @@ class Scraper:
             decoded_row = (street_str, zip_code, price, sell_date,sell_type, price_per_sq_m, no_rooms,
                            housing_type, size_in_sq_m, year_of_contruction, price_change_in_pct)
             data.append(decoded_row)
-    
-        print(data[1])
-        print(data[10])
-        print(data[37])
         
         return data;
     
 class Main:
     
     host = 'http://138.197.184.35/boliga/'
-    htmls = ['2650_38.html']
+    htmls = ['2000_1.html','2650_38.html','2650_39.html']
     
     def save_to_csv(data, path):
     
-        with open(path, 'w', encoding='utf-8') as output_file:
-            output_writer = csv.writer(output_file)
-            output_writer.writerow(['street_str', 'zip_code', 'price', 'sell_date','sell_type', 'price_per_sq_m', 'no_rooms',
+        if os.path.exists(path):
+            with open(path, 'a', encoding='utf-8') as output_file:
+                output_writer = csv.writer(output_file)
+                for row in data:
+                    output_writer.writerow(row)
+        else:
+            with open(path, 'w', encoding='utf-8') as output_file:
+                output_writer = csv.writer(output_file)
+                output_writer.writerow(['street_str', 'zip_code', 'price', 'sell_date','sell_type', 'price_per_sq_m', 'no_rooms',
                                    'housing_type', 'size_in_sq_m', 'year_of_contruction', 'price_change_in_pct'])
 
-            for row in data:
-                output_writer.writerow(row)
-               
-    
-    
+                for row in data:
+                    output_writer.writerow(row)
+           
     out_dir = './out'
     if not os.path.exists(out_dir):
         os.mkdir(out_dir)
@@ -96,5 +96,5 @@ class Main:
         scraper = Scraper(url)
         data = scraper.scrape()   
         save_to_file = os.path.join(out_dir, os.path.basename(html).split('_')[0] + '.csv')
-        save_to_csv(data, save_to_file) 
+        save_to_csv(data, save_to_file)
     
