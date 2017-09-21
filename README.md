@@ -1,6 +1,6 @@
 # Assignment 3
 
-### Geocode the the entire dataset
+### 1) Geocode the the entire dataset
 **Setup:**
 
 ```python
@@ -40,12 +40,14 @@ for idx, decoded_node in enumerate(decode_node_to_csv()):
 <br>
 Bla bla bla
 
-### Convert all sales dates in the dataset into proper datetime
+
+### 2) Convert all sales dates in the dataset into proper datetime
 **Result:**
 <br>
 Bla bla bla
 
-### Compute the average price per square meter for the years 1992 and 2016
+
+### 3) Compute the average price per square meter for the years 1992 and 2016
 **Result:**
 <br>
 Bla bla bla
