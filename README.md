@@ -1,7 +1,7 @@
 # Assignment 3
 
 ### Geocode the the entire dataset
-**Setup: **
+**Setup:**
 
 ```python
 %%bash
