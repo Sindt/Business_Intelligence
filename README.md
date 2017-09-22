@@ -1,7 +1,9 @@
 # Assignment 3
 
 ### 1) Geocode the the entire dataset
-**Setup:**
+#### Setup
+
+**Download som og unzip**
 
 ```python
 %%bash
@@ -9,12 +11,22 @@ wget --directory-prefix=./data/ http://download.geofabrik.de/europe/denmark-late
 bzip2 -d ./data/denmark-latest.osm.bz2
 ```
 
+**Installation af osmread**
+
 ```python
 %%bash
-
 sudo pip install osmread
 ```
 
+**Data fra csv fil (Kan findes i zip under Assigment_3 folder:**
+
+```python
+import pandas as pd
+df = pd.read_csv('boliga_all.csv')
+df.head()
+```
+
+**Data fra osm fil**
 
 ```python
 from osmread import parse_file, Node
