@@ -100,24 +100,46 @@ df["sell_date"] = pd.to_datetime(df["sell_date"], dayfirst=True, errors='coerce'
 ```python
 import numpy as np
 
-mask0 = (df["sell_date"].dt.year == 1992) & (df['price_per_sq_m'] != '-') & (~df['price_per_sq_m'].isnull())
-mask1 = (df["sell_date"].dt.year == 2016) & (df['price_per_sq_m'] != '-') & (~df['price_per_sq_m'].isnull())
+df['zip_nr'] = [int(el.split(' ')[0]) for el in df['zip_code'].values]
 
-mean0 = (df[mask0].price_per_sq_m.astype(int)).mean()
-mean1 = (df[mask1].price_per_sq_m.astype(int)).mean()
+mask92 = (df["sell_date"].dt.year == 1992) & (df['price_per_sq_m'] != '-') & (~df['price_per_sq_m'].isnull())
+mask16 = (df["sell_date"].dt.year == 2016) & (df['price_per_sq_m'] != '-') & (~df['price_per_sq_m'].isnull())
 
-print("1996")
-print(mean0)
-print()
-print("2016")
-print(mean1)
+city_code92 = np.unique(df[mask92].zip_nr)
+city_code16 = np.unique(df[mask16].zip_nr)
+
+mean92 = df[mask92].groupby(["zip_nr"]).price_per_sq_m.mean()
+mean16 = df[mask16].groupby(["zip_nr"]).price_per_sq_m.mean()
+
+city_names = ["København", "Odense", "Aarhus", "Aalborg"]
+zips = [1050, 5000, 8000, 9000]
+
+df_avg92 = pd.DataFrame({'city_code': city_code92,
+                        'city': city_names,
+                        'zip': zips},
+                        columns=['city_code', 'city', 'zip'],
+                        index=city_code
+                       )
+df_avg92 = df_avg92.join(pd.DataFrame(mean92))
+df_avg92.rename(columns={'price_per_sq_m': 'Average'}, inplace=True)
+
+
+df_avg16 = pd.DataFrame({'city_code': city_code16,
+                        'city': city_names,
+                        'zip': zips},
+                        columns=['city_code', 'city', 'zip'],
+                        index=city_code
+                       )
+df_avg16 = df_avg16.join(pd.DataFrame(mean16))
+df_avg16.rename(columns={'price_per_sq_m': 'Average'}, inplace=True)
+
+df_avg92
+df_avg16
 ```
 **Result:**
 <br>
-1992: 4733.357925455663
-<br>
-2016: 17229.21362691681
-<br>
+The code is not complete for this exercise at the point of hand-in, but it should be almost solved with the code above.
+
 
 ### 4) Create, four new CSV files containing the sales data of, Copenhagen, Odense, Aarhus, and Aalborg.
 ```python
