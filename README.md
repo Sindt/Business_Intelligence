@@ -54,9 +54,8 @@ Bla bla bla
 
 
 ### 2) Convert all sales dates in the dataset into proper datetime
-**Result:**
-<br>
-Bla bla bla
+```python
+df["sell_date"] = pd.to_datetime(df["sell_date"], dayfirst=True, errors='coerce')
 
 
 ### 3) Compute the average price per square meter for the years 1992 and 2016
