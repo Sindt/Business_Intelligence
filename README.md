@@ -84,12 +84,8 @@ to_csv( df[df['zip_code'] == '9000 Aalborg']['1992'],'9000')
 ```
 
 ### 5) Create a 2-dimensional scatter plot
-**Result:**
-<br>
-Bla bla bla
+Vi havde mange problemer med opgave 1, og da den ikke nåede at, kører færdi inden aflevering, har vi ikke kunnet lave denne opgave.
 
 ### 6) Use the following function, which computes the Haversine Distance
-**Result:**
-<br>
-Bla bla bla
+Vi havde mange problemer med opgave 1, og da den ikke nåede at kører færdi inden aflevering, har vi ikke kunnet lave denne opgave
 
