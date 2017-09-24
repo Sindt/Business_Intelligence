@@ -63,17 +63,17 @@ df["sell_date"] = pd.to_datetime(df["sell_date"], dayfirst=True, errors='coerce'
 <br>
 Bla bla bla
 
-### Create, four new CSV files containing the sales data of, Copenhagen, Odense, Aarhus, and Aalborg.
+### 4) Create, four new CSV files containing the sales data of, Copenhagen, Odense, Aarhus, and Aalborg.
 **Result:**
 <br>
 Bla bla bla
 
-### Create a 2-dimensional scatter plot
+### 5) Create a 2-dimensional scatter plot
 **Result:**
 <br>
 Bla bla bla
 
-### Use the following function, which computes the Haversine Distance
+### 6) Use the following function, which computes the Haversine Distance
 **Result:**
 <br>
 Bla bla bla
