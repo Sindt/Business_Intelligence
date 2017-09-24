@@ -59,9 +59,27 @@ df["sell_date"] = pd.to_datetime(df["sell_date"], dayfirst=True, errors='coerce'
 ```
 
 ### 3) Compute the average price per square meter for the years 1992 and 2016
+```python
+import numpy as np
+
+mask0 = (df["sell_date"].dt.year == 1992) & (df['price_per_sq_m'] != '-') & (~df['price_per_sq_m'].isnull())
+mask1 = (df["sell_date"].dt.year == 2016) & (df['price_per_sq_m'] != '-') & (~df['price_per_sq_m'].isnull())
+
+mean0 = (df[mask0].price_per_sq_m.astype(int)).mean()
+mean1 = (df[mask1].price_per_sq_m.astype(int)).mean()
+
+print("1996")
+print(mean0)
+print()
+print("2016")
+print(mean1)
+```
 **Result:**
 <br>
-Bla bla bla
+1992: 4733.357925455663
+<br>
+2016: 17229.21362691681
+<br>
 
 ### Create, four new CSV files containing the sales data of, Copenhagen, Odense, Aarhus, and Aalborg.
 **Result:**
