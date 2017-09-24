@@ -36,9 +36,8 @@ import numpy as np
 
 postcodes = defaultdict(lambda: defaultdict(dict))
 
-pathboliga = "E:/school/BI/boliga_all.csv"
-pathconverted = "E:/school/BI/geoconverted.csv"
-pathosm = "E:/school/BI/denmark-latest.osm"
+pathboliga = "./data/boliga_all.csv"
+pathosm = "./data/denmark-latest.osm"
 
 def add_geocode():
     df = pd.read_csv(pathboliga)
@@ -66,7 +65,7 @@ def add_geocode():
         except (KeyError, ValueError):
             pass
 
-    dataframe.to_csv("E:/school/BI/geo_data.csv", sep=',', encoding='utf-8')
+    dataframe.to_csv("./data/geo_data.csv", sep=',', encoding='utf-8')
 
 
 def decode_node_to_csv(file):
