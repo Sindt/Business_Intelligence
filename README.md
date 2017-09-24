@@ -3,7 +3,7 @@
 ### 1) Geocode the the entire dataset
 #### Setup
 
-**Download som og unzip**
+**Download osm og unzip**
 
 ```python
 %%bash
