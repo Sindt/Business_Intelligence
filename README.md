@@ -90,10 +90,6 @@ add_geocode()
 
 ```
 
-**Result:**
-<br>
-Bla bla bla
-
 
 ### 2) Convert all sales dates in the dataset into proper datetime
 ```python
@@ -144,12 +140,7 @@ to_csv( df[df['zip_code'] == '9000 Aalborg']['1992'],'9000')
 ```
 
 ### 5) Create a 2-dimensional scatter plot
-**Result:**
-<br>
-Bla bla bla
+Vi havde mange problemer med opgave 1, og da den ikke nåede at kører færdig inden aflevering, har vi ikke kunne lave denne opgave.
 
 ### 6) Use the following function, which computes the Haversine Distance
-**Result:**
-<br>
-Bla bla bla
-
+Vi havde mange problemer med opgave 1, og da den ikke nåede at kører færdig inden aflevering, har vi ikke kunne lave denne opgave.
