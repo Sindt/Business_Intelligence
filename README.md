@@ -59,9 +59,25 @@ df["sell_date"] = pd.to_datetime(df["sell_date"], dayfirst=True, errors='coerce'
 ```
 
 ### 3) Compute the average price per square meter for the years 1992 and 2016
-**Result:**
-<br>
-Bla bla bla
+```python
+import pandas as pd
+df = pd.read_csv('boliga_all.csv')
+
+df.index = df['sell_date']
+del df['sell_date']
+
+def to_csv(data, name):
+    try:
+        data.to_csv(name + '.csv', sep='\t')
+    except:
+        print('Error')
+    
+to_csv( df[df['zip_code'] == '1050 København K']['1992'],'1050')   
+to_csv( df[df['zip_code'] == '5000 Odense C']['1992'],'5000')   
+to_csv( df[df['zip_code'] == '8000 Aarhus C']['1992'],'8000')   
+to_csv( df[df['zip_code'] == '9000 Aalborg']['1992'],'9000')    
+```
+
 
 ### 4) Create, four new CSV files containing the sales data of, Copenhagen, Odense, Aarhus, and Aalborg.
 **Result:**
