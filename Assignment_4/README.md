@@ -15,5 +15,9 @@
 ### 5) Create a cumulatve histogram
 
 
+### 6) Create a 3D histogram
+
+
+### 7) Freestyle - Create a plot
 
 
