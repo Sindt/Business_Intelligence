@@ -1,5 +1,16 @@
 # Assignment 4: Data Visualisation
 
+
+Udpak zip fil med boliga loc data:
+
+```python
+%%bash
+
+bzip2 -d ./data/boliga_all_loc.csv.bz2
+
+```
+
+
 ### 1) Create a plot with the help of Basemap
 
 
