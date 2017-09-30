@@ -111,7 +111,7 @@ city_code16 = np.unique(df[mask16].zip_nr)
 mean92 = df[mask92].groupby(["zip_nr"]).price_per_sq_m.mean()
 mean16 = df[mask16].groupby(["zip_nr"]).price_per_sq_m.mean()
 
-city_names = ["K�benhavn", "Odense", "Aarhus", "Aalborg"]
+city_names = ["København", "Odense", "Aarhus", "Aalborg"]
 zips = [1050, 5000, 8000, 9000]
 
 df_avg92 = pd.DataFrame({'city_code': city_code92,
@@ -155,14 +155,14 @@ def to_csv(data, name):
     except:
         print('Error')
     
-to_csv( df[df['zip_code'] == '1050 København K']['1992'],'1050')   
+to_csv( df[df['zip_code'] == '1050 KÃ¸benhavn K']['1992'],'1050')   
 to_csv( df[df['zip_code'] == '5000 Odense C']['1992'],'5000')   
 to_csv( df[df['zip_code'] == '8000 Aarhus C']['1992'],'8000')   
 to_csv( df[df['zip_code'] == '9000 Aalborg']['1992'],'9000')    
 ```
 
 ### 5) Create a 2-dimensional scatter plot
-Vi havde mange problemer med opgave 1, og da den ikke nåede at kører færdig inden aflevering, har vi ikke kunne lave denne opgave.
+Vi havde mange problemer med opgave 1, og da den ikke nÃ¥ede at kÃ¸rer fÃ¦rdig inden aflevering, har vi ikke kunne lave denne opgave.
 
 ### 6) Use the following function, which computes the Haversine Distance
-Vi havde mange problemer med opgave 1, og da den ikke nåede at kører færdig inden aflevering, har vi ikke kunne lave denne opgave.
+Vi havde mange problemer med opgave 1, og da den ikke nÃ¥ede at kÃ¸rer fÃ¦rdig inden aflevering, har vi ikke kunne lave denne opgave.
