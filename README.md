@@ -13,6 +13,51 @@ bzip2 -d ./data/boliga_all_loc.csv.bz2
 
 ### 1) Create a plot with the help of Basemap
 
+```python
+ import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = 'D:/Kasper/School/BI/boliga_all_loc.csv'
+
+dateparse = lambda x: pd.datetime.strptime(x, '%d-%m-%Y')
+
+df = pd.read_csv(data, parse_dates=['sell_date'], date_parser=dateparse)
+
+
+df['zip_nr'] = [int(el.split(' ')[0])
+                for el in df['zip_code'].values]
+
+
+df['sell_year'] = df['sell_date'].dt.year
+
+df.head()
+
+## Approx. within 50 km
+mask = ((df['sell_year'] == 2015) &
+        (df['lat'] <= 56.128313) &
+        (df['lat'] >= 55.223909) &
+        (df['lon'] <= 13.020535) &
+        (df['lon'] >= 12.116131))
+df_copenhagen = df[mask]
+df_copenhagen.head()
+
+
+x_values = df_copenhagen['lon']
+y_values = df_copenhagen['lat']
+
+plt.scatter(x_values[:], y_values[:], s=1, edgecolor='none')
+
+
+plt.plot()
+
+plt.show()
+
+# pd.to_datetime(df['sell_date'])
+
+
+```
+
 
 ### 2) Use folium to plot the locations of the 1992 housing sales for the city centers of Copenhagen
 
