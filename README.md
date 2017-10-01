@@ -24,11 +24,6 @@ dateparse = lambda x: pd.datetime.strptime(x, '%d-%m-%Y')
 
 df = pd.read_csv(data, parse_dates=['sell_date'], date_parser=dateparse)
 
-
-df['zip_nr'] = [int(el.split(' ')[0])
-                for el in df['zip_code'].values]
-
-
 df['sell_year'] = df['sell_date'].dt.year
 
 df.head()
@@ -55,6 +50,8 @@ plt.show()
 
 
 ```
+
+![alt text](https://i.imgur.com/lNHglMR.png)
 
 
 ### 2) Use folium to plot the locations of the 1992 housing sales for the city centers of Copenhagen
