@@ -54,7 +54,7 @@ plt.show()
 ![alt text](https://i.imgur.com/lNHglMR.png)
 
 
-### 2) Use folium to plot the locations of the 1992 housing sales for the city centers of Copenhagen
+### 2) Use folium to plot the locations of the 1992 housing sales for the city centers
 
 ```python
 %%bash
