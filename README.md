@@ -79,7 +79,7 @@ df.index = df['sell_date']
 del df['sell_date']
 
 
-df1 = [df[df['zip_code'] == '1050 København K']['1992'], df[df['zip_code'] == '5000 Odense C']['1992'],df[df['zip_code'] == '8000 Aarhus C']['1992'],   
+df1 = [df[df['zip_code'] == '1050 KÃ¸benhavn K']['1992'], df[df['zip_code'] == '5000 Odense C']['1992'],df[df['zip_code'] == '8000 Aarhus C']['1992'],   
 df[df['zip_code'] == '9000 Aalborg']['1992']]
        
 result = pd.concat(df1)
@@ -100,7 +100,7 @@ my_map
 ### 3) Create a 2D plot
 
 hypothesis:
-It would be expected that the price_per_sq_m will decrease when the distance to n�rreport increases, because you get further and further from the city center towards the outskirts of the city. 
+It would be expected that the price_per_sq_m will decrease when the distance to nørreport increases, because you get further and further from the city center towards the outskirts of the city. 
 
 
 
@@ -154,11 +154,44 @@ plot_values(df3['price_per_sq_m'], df3['dist_to_center'])
 ```
 
 Conclusion:
-When calculating the distance to n�rreport from the geolocations in the dataset, we ended up with distances which where quite similar across the whole dataset. This points to an error in the calculation, but it has not been possible to locate it.
+When calculating the distance to nørreport from the geolocations in the dataset, we ended up with distances which where quite similar across the whole dataset. This points to an error in the calculation, but it has not been possible to locate it.
 
 
 ### 4) Create a histogram (bar plot)
 
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from collections import Counter
+
+##Not working
+
+data = 'D:/Kasper/School/BI/boliga_all_loc.csv'
+
+df = pd.read_csv(data)
+
+
+mask = (df['sell_type'] == 'Andet')
+result = df[mask]
+result.head()
+fig = plt.figure()
+
+result_freq = list(Counter(df[mask]['sell_type']))
+
+plt.hist(df['zip_code'], bin=range(0, 9999, 50))
+
+plt.hist(result['zip_code'], result['sell_type'], bin=range(0, 9999, 50))
+plt.title('House trades per zip code')
+plt.xlabel('Zip Code')
+plt.ylabel('Trades')
+
+plt.hist()
+
+
+plt.show()
+
+```
 
 ### 5) Create a cumulatve histogram
 
