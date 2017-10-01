@@ -53,8 +53,6 @@ plt.plot()
 
 plt.show()
 
-# pd.to_datetime(df['sell_date'])
-
 
 ```
 
