@@ -18,7 +18,7 @@ bzip2 -d ./data/boliga_all_loc.csv.bz2
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = 'D:/Kasper/School/BI/boliga_all_loc.csv'
+data = './data/boliga_all_loc.csv'
 
 dateparse = lambda x: pd.datetime.strptime(x, '%d-%m-%Y')
 
