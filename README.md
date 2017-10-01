@@ -102,6 +102,63 @@ my_map
 
 ### 3) Create a 2D plot
 
+hypothesis:
+It would be expected that the price_per_sq_m will decrease when the distance to nørreport increases, because you get further and further from the city center towards the outskirts of the city. 
+
+
+
+```python
+import math
+import matplotlib.pyplot as plt
+%matplotlib notebook
+
+
+def haversine_distance(origin, destination):
+
+    lat_orig, lon_orig = origin
+    lat_dest, lon_dest = destination
+    radius = 6371
+
+    dlat = math.radians(lat_dest-lat_orig)
+    dlon = math.radians(lon_dest-lon_orig)
+    a = (math.sin(dlat / 2) * math.sin(dlat / 2) + math.cos(math.radians(lat_orig))
+        * math.cos(math.radians(lat_dest)) * math.sin(dlon / 2) * math.sin(dlon / 2))
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    d = radius * c
+
+    return d
+
+
+def plot_values(x, y):
+
+    plt.plot(x,y, 'ro')
+    plt.axis([0, 80000, 0, 8000])
+    plt.show()    
+    
+
+
+mask = ((df_zealand_00_05['sell_year'] == 2005) &
+            (~df_zealand_00_05['price_per_sq_m'].isnull()) &
+            (df_zealand_00_05['price_per_sq_m'] < 80000) &
+            (df_zealand_00_05['zip_nr'] < 3000))
+
+prices = df_zealand_00_05[mask]['price_per_sq_m']
+
+df['dist_to_center'] = [haversine_distance((55.6837, 12.5716), el) 
+             for el in df[mask][['lon', 'lat']].values]
+
+
+df3 = df[mask][['price_per_sq_m','dist_to_center']]
+
+df3.sort_values(by=['price_per_sq_m'])
+
+plot_values(df3['price_per_sq_m'], df3['dist_to_center'])
+
+```
+
+Conclusion:
+When calculating the distance to nørreport from the geolocations in the dataset, we ended up with distances which where quite similar across the whole dataset. This points to an error in the calculation, but it has not been possible to locate it.
+
 
 ### 4) Create a histogram (bar plot)
 
