@@ -54,8 +54,7 @@ for coords in zip(result_1992.lon.values,
     folium.CircleMarker(location=[coords[1], coords[0]], radius=2).add_to(my_map)
 my_map.save('data/1992.html')
 my_map    
-
-
+```
 
 
 ### 3) Create a 2D plot
