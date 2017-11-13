@@ -19,17 +19,14 @@ import json
 from pprint import pprint
 from sklearn.model_selection import train_test_split
 
-with open('users.json') as data_file:    
+with open('assignments/assignment_5/users.json') as data_file:    
     data = json.load(data_file)
+    df = pd.DataFrame(data,columns=['created','karma'],dtype=object)
     
-df = pd.DataFrame.from_dict(data, orient='columns')
 
-###Assigning NaN values to 0
-df.fillna(0)
-
-
-X = df['created']
-Y = df['karma']
+df = df.fillna(lambda x: x.median())
+X = df['created'][:10]
+Y = df['karma'][:10]   
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.20)
@@ -40,8 +37,9 @@ X_test = X_test.values.reshape(-1, 1)
 y_train = y_train.values.reshape(-1, 1)
 y_test = y_test.values.reshape(-1, 1)
 
-
 ```
+
+
 
 ## Part 2
 
