@@ -52,6 +52,7 @@ Output:
 
 ```
 **Hældningskoefficienten a er grafens hældning. I vores eksempel er a negativ (-5.46) og derfor er vores funktion aftagende. b kan beskrives, som  den værdi hvor den lineære funktion skærer y-aksen. I vores eksempel 79962**
+<p>Training data plot kan findes i filen: output_2_1.png<p>
 
 
 ## Part 2
