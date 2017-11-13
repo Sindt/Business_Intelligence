@@ -37,6 +37,13 @@ X_test = X_test.values.reshape(-1, 1)
 y_train = y_train.values.reshape(-1, 1)
 y_test = y_test.values.reshape(-1, 1)
 
+model = LinearRegression(normalize = True)
+model.fit(X_train, y_train)
+
+plt.scatter(X_train,y_train)
+plt.plot(X_train, model.predict(X_train), color='red')
+
+
 ```
 
 
