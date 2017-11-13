@@ -39,8 +39,17 @@ model.fit(X_train, y_train)
 
 plt.scatter(X_train,y_train)
 plt.plot(X_train, model.predict(X_train), color='red')
+a = model.coef_[0]
+b = model.intercept_[0]
+
+print(a)
+print(b)
 
 
+Output:
+[ -5.45604925e-05]
+    79962.4223844
+Hældningskoefficienten a er grafens hældning. I vores eksempel er a negativ og derfor er vores funktion aftagende. b kan beskrives, som  den værdi hvor den lineære funktion skærer y-aksen. I vores eksempel 79962
 ```
 
 
