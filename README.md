@@ -82,6 +82,6 @@ y_pred = model.predict(X_test)
 
 ```python
 print('MSE: %.2f' % mean_squared_error(y_test, y_pred))
-
-Output: MSE: 172403.27
+# Using a sample of 1000
+Output: MSE: 74022065.02
 ```
