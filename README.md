@@ -73,7 +73,6 @@ Output: 4446.47
 from sklearn.metrics import mean_squared_error
 from sklearn import linear_model
 
-###Should be _train values 
 model = linear_model.LinearRegression()
 
 model.fit(X_train, y_train)
