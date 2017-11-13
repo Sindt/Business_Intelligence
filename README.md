@@ -78,7 +78,6 @@ model = linear_model.LinearRegression()
 
 model.fit(X_train, y_train)
 
-```python
 y_pred = model.predict(X_test)
 ```
 
