@@ -4,6 +4,8 @@
 
 
 
+
+
 ```python
 import numpy as np
 import pandas as pd
@@ -36,31 +38,53 @@ y_train = y_train.values.reshape(-1,1)
 model = sklearn.linear_model.LinearRegression()
 model.fit(X_train, y_train)
 
-print(model.predict(X_test[0:5]))
+y_pred = model.predict(X_test)
 ```
 
-    [[ 4343.11944603]
-     [-1971.78336979]
-     [ 8892.74335073]
-     [ 4684.77812144]
-     [  550.45865199]]
+
+```python
+sklearn.metrics.mean_absolute_error(y_test, y_pred)
+```
+
+
+
+
+    3957.9158644781655
+
 
 
 
 ```python
-model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
+print('MSE: %.2f' % sklearn.metrics.mean_squared_error(y_test, y_pred))
+```
+
+    MSE: 42827054.00
+
+
+## Part 2
+```python
+model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=10)
 model.fit(X_train, y_train)
 
-print(model.predict(X_test[0:5]))
+y_pred = model.predict(X_test)
 ```
 
-    [[6109.0]
-     [11.0]
-     [2599.0]
-     [5851.666666666667]
-     [298.6666666666667]]
 
-
-
+```python
+sklearn.metrics.mean_absolute_error(y_test, y_pred)
 ```
+
+
+
+
+    3063.4234000000001
+
+
+
+
+```python
+print('MSE: %.2f' % sklearn.metrics.mean_squared_error(y_test, y_pred))
+```
+
+    MSE: 42827054.00
 
