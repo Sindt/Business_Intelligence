@@ -17,5 +17,10 @@ with open('assignments/assignment_6/users.json') as data_file:
 
 #Replacing id with value = count of unique values
 df['id'] = df['id'].map(df['id'].value_counts())
+
+X = df[['created', 'id']]
+Y = df[['karma']]
+
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.20)
 ```
 
