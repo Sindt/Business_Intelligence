@@ -14,19 +14,6 @@ import nltk
 nltk.download('vader_lexicon')
 ```
 
-    [nltk_data] Downloading package vader_lexicon to
-    [nltk_data]     /home/vagrant/nltk_data...
-    [nltk_data]   Package vader_lexicon is already up-to-date!
-
-
-
-
-
-    True
-
-
-
-
 ```python
 df = pd.read_csv('assignments/assignment_7/hn_items.csv',dtype={'text': str})
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
