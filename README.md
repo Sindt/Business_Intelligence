@@ -6,10 +6,6 @@
 ```python
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-%matplotlib inline
-import json
-import sklearn
 import nltk
 nltk.download('vader_lexicon')
 ```
