@@ -8,10 +8,11 @@ import numpy as np
 import pandas as pd
 import nltk
 nltk.download('vader_lexicon')
+df = pd.read_csv('assignments/assignment_7/hn_items.csv',dtype={'text': str})
+
 ```
 
 ```python
-df = pd.read_csv('assignments/assignment_7/hn_items.csv',dtype={'text': str})
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 model = SentimentIntensityAnalyzer()
 ```
@@ -20,6 +21,7 @@ model = SentimentIntensityAnalyzer()
 ```python
 scores = [model.polarity_scores(text) for text in df['text'].astype(str)]
 scores = pd.DataFrame(scores)
+
 negative = scores.sort_values(by=['neg'],ascending=False)
 postive = scores.sort_values(by=['pos'],ascending=False)
 ```
