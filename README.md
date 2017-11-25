@@ -19,16 +19,22 @@ model = SentimentIntensityAnalyzer()
 
 
 ```python
+#Get score foreach text
 scores = [model.polarity_scores(text) for text in df['text'].astype(str)]
-scores = pd.DataFrame(scores)
 
+#Created df with score and the text
+scores = pd.DataFrame(scores,df['text'])
+
+#sorting
 negative = scores.sort_values(by=['neg'],ascending=False)
 postive = scores.sort_values(by=['pos'],ascending=False)
+
 ```
 
 
 ```python
-negative.head()
+#TOP 5 most negative:
+negative[:5]
 ```
 <p>Top 5 negative:</p>
 
@@ -41,38 +47,45 @@ negative.head()
       <th>neu</th>
       <th>pos</th>
     </tr>
+    <tr>
+      <th>text</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>8932</th>
+      <th>Fools.</th>
       <td>-0.4939</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>4516</th>
+      <th>desperation</th>
       <td>-0.4588</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>7326</th>
+      <th>Desperation?</th>
       <td>-0.4588</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>4505</th>
+      <th>dupe.</th>
       <td>-0.3612</td>
       <td>1.0</td>
       <td>0.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>5750</th>
+      <th>Ignorable.</th>
       <td>-0.2500</td>
       <td>1.0</td>
       <td>0.0</td>
@@ -80,13 +93,13 @@ negative.head()
     </tr>
   </tbody>
 </table>
-</div>
 
 
 
 
 ```python
-postive.head()
+#TOP 5 most positive:
+postive[:5]
 ```
 <p>Top 5 positive:</p>
 
@@ -99,38 +112,45 @@ postive.head()
       <th>neu</th>
       <th>pos</th>
     </tr>
+    <tr>
+      <th>text</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
-      <th>3656</th>
+      <th>nice!</th>
       <td>0.4753</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>7893</th>
+      <th>yes</th>
       <td>0.4019</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>3025</th>
+      <th>True</th>
       <td>0.4215</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>6001</th>
+      <th>hilarious!\n</th>
       <td>0.4574</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>7612</th>
+      <th>haha, cute.\n</th>
       <td>0.7184</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -138,6 +158,3 @@ postive.head()
     </tr>
   </tbody>
 </table>
-</div>
-
-
