@@ -161,7 +161,6 @@ postive[:5]
 
 ## Part 2
 <p>Forudsætter at part 1 er kørt først</p>
-
 ```python
 df = pd.DataFrame(scores)
 
@@ -169,13 +168,38 @@ X = np.array(df[['pos','neg']])
 y = np.array(df['neg'])
 ```
 
+
+```python
+from sklearn import preprocessing
+
+lab_enc = preprocessing.LabelEncoder()
+y = lab_enc.fit_transform(y)
+```
+
+
 ```python
 from sklearn.neighbors import KNeighborsClassifier
 model = KNeighborsClassifier()
-model.fit(X, y)
+model.fit(X,y)
 ```
+
+
+
+
+    KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
+               metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+               weights='uniform')
+
+
+
+
 ```python
 import sklearn.metrics as metrics
 metrics.accuracy_score(y, model.predict(X))
-metrics.f1_score(y, model.predict(X), 'sample')
 ```
+
+
+
+
+    0.78959999999999997
+
