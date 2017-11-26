@@ -191,3 +191,5 @@ metrics.accuracy_score(y, model.predict(X))
 
     0.78959999999999997
 
+## Part 3
+
