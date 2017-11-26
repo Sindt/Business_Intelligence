@@ -160,24 +160,15 @@ postive[:5]
 </table>
 
 ## Part 2
+<p>Forudsætter at part 1 er kørt først</p>
 
 ```python
-
 df = pd.DataFrame(scores)
 
-X = np.array(df['pos'])
+X = np.array(df[['pos','neg']])
 y = np.array(df['neg'])
-
-X = X.reshape(-1,1)
-X.shape
 ```
-```python
-from sklearn import preprocessing
-lab_enc = preprocessing.LabelEncoder()
-X = lab_enc.fit_transform(X)
-#encoded_y = lab_enc.fit_transform(y)
 
-```
 ```python
 from sklearn.neighbors import KNeighborsClassifier
 model = KNeighborsClassifier()
