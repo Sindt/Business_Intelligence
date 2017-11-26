@@ -193,3 +193,148 @@ metrics.accuracy_score(y, model.predict(X))
 
 ## Part 3
 
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+import folium
+```
+
+```python
+df = pd.read_csv('assignments/assignment_7/boliga.zip', compression='zip')
+df.head()
+```
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Index</th>
+      <th>_1</th>
+      <th>address</th>
+      <th>zip_code</th>
+      <th>price</th>
+      <th>sell_date</th>
+      <th>sell_type</th>
+      <th>price_per_sq_m</th>
+      <th>no_rooms</th>
+      <th>housing_type</th>
+      <th>size_in_sq_m</th>
+      <th>year_of_construction</th>
+      <th>price_change_in_pct</th>
+      <th>lon</th>
+      <th>lat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Ved Volden 5, 5. TV</td>
+      <td>1425 København K</td>
+      <td>4000000</td>
+      <td>23-05-2017</td>
+      <td>Alm. Salg</td>
+      <td>43956.0</td>
+      <td>3.0</td>
+      <td>Lejlighed</td>
+      <td>91.0</td>
+      <td>1938.0</td>
+      <td>0.0</td>
+      <td>12.593629</td>
+      <td>55.671769</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Rådhusstræde 4C, 1</td>
+      <td>1466 København K</td>
+      <td>4895000</td>
+      <td>18-05-2017</td>
+      <td>Alm. Salg</td>
+      <td>46619.0</td>
+      <td>3.0</td>
+      <td>Lejlighed</td>
+      <td>105.0</td>
+      <td>1796.0</td>
+      <td>0.0</td>
+      <td>12.573689</td>
+      <td>55.676839</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>Store Kongensgade 112A, 3</td>
+      <td>1264 København K</td>
+      <td>250000</td>
+      <td>15-05-2017</td>
+      <td>Andet</td>
+      <td>1851.0</td>
+      <td>2.0</td>
+      <td>Lejlighed</td>
+      <td>135.0</td>
+      <td>1860.0</td>
+      <td>0.0</td>
+      <td>12.590441</td>
+      <td>55.687079</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>Amaliegade 13G, 2</td>
+      <td>1256 København K</td>
+      <td>7375000</td>
+      <td>15-05-2017</td>
+      <td>Alm. Salg</td>
+      <td>75255.0</td>
+      <td>3.0</td>
+      <td>Lejlighed</td>
+      <td>98.0</td>
+      <td>1948.0</td>
+      <td>9.0</td>
+      <td>12.591287</td>
+      <td>55.683439</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>Borgergade 144, 3. TH</td>
+      <td>1300 København K</td>
+      <td>5825000</td>
+      <td>10-05-2017</td>
+      <td>Alm. Salg</td>
+      <td>57673.0</td>
+      <td>3.0</td>
+      <td>Lejlighed</td>
+      <td>101.0</td>
+      <td>1854.0</td>
+      <td>3.0</td>
+      <td>12.588744</td>
+      <td>55.687623</td>
+    </tr>
+  </tbody>
+</table>
+
+```python
+location_df = df[['lon','lat','price']]
+location_df = location_df.fillna(0)
+```
+
+```python
+my_map = folium.Map(location=[55.676098, 12.568337], zoom_start=10)
+from folium.plugins import HeatMap
+HeatMap(location_df.values.tolist()).add_to(my_map)
+my_map
+```
