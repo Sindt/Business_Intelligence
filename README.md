@@ -158,3 +158,33 @@ postive[:5]
     </tr>
   </tbody>
 </table>
+
+## Part 2
+
+```python
+
+df = pd.DataFrame(scores)
+
+X = np.array(df['pos'])
+y = np.array(df['neg'])
+
+X = X.reshape(-1,1)
+X.shape
+```
+```python
+from sklearn import preprocessing
+lab_enc = preprocessing.LabelEncoder()
+X = lab_enc.fit_transform(X)
+#encoded_y = lab_enc.fit_transform(y)
+
+```
+```python
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier()
+model.fit(X, y)
+```
+```python
+import sklearn.metrics as metrics
+metrics.accuracy_score(y, model.predict(X))
+metrics.f1_score(y, model.predict(X), 'sample')
+```
