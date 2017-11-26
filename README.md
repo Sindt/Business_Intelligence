@@ -161,13 +161,13 @@ postive[:5]
 
 ## Part 2
 <p>Forudsætter at part 1 er kørt først</p>
+
 ```python
 df = pd.DataFrame(scores)
 
 X = np.array(df[['pos','neg']])
 y = np.array(df['neg'])
 ```
-
 
 ```python
 from sklearn import preprocessing
