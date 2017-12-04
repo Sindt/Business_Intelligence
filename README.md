@@ -1,340 +1,85 @@
-# Business_Intelligence - Assignment 7
+# Assignment 8: Populations and deep learning
 
-## Part 1:
+## Part 1: Accuracy and recall
 
+### Part 1.1 & 1.2
+Write two lines: what is the difference between accuracy and precision?
+Write two lines: what is the difference between precision and recall?
 
-```python
-import numpy as np
-import pandas as pd
-import nltk
-nltk.download('vader_lexicon')
-df = pd.read_csv('assignments/assignment_7/hn_items.csv',dtype={'text': str})
+Accuracy
+<ul>
+<li>True Positives (<b>TP</b>): number of positive examples.</li>
+<li>False Positives (<b>FP</b>): number of negative examples, labeled as positive.</li>
+<li>True Negatives (<b>TN</b>): number of negative examples.</li>
+<li>False Negatives (<b>FN</b>): number of positive examples, labeled as negative.</li>
+</ul>
 
-```
+accuracy = (TP + TN)/(TP + TN + FP + FN)
 
-```python
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-model = SentimentIntensityAnalyzer()
-```
+The accuracy paradox:
+Depending on whether we set it to output the positives or the negatives,
+the accuracy will always increase, when <b>TP</b> < <b>FP</b> or when <b>Tn</b> < <b>FN</b>.
 
+So to not get bamboozled by a false accuracy, we use together with precision and recall:
 
-```python
-#Get score foreach text
-scores = [model.polarity_scores(text) for text in df['text'].astype(str)]
+precision = <b>TP/(TP + FP)</b>
+recall = <b>TP/(TP + FN)</b>
 
-#Created df with score and the text
-scores = pd.DataFrame(scores,df['text'])
+Example:
 
-#sorting
-negative = scores.sort_values(by=['neg'],ascending=False)
-postive = scores.sort_values(by=['pos'],ascending=False)
+We create a program that detects blue cars. We pass 15 pictures of cars of different color to it.
+Out of the 15 cars, the program recognizes 10 to be blue. 7 of the 10 recognized cars are blue (true positives),
+while the rest are yellow (false positives).
 
-```
-
-
-```python
-#TOP 5 most negative:
-negative[:5]
-```
-<p>Top 5 negative:</p>
-
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>compound</th>
-      <th>neg</th>
-      <th>neu</th>
-      <th>pos</th>
-    </tr>
-    <tr>
-      <th>text</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Fools.</th>
-      <td>-0.4939</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>desperation</th>
-      <td>-0.4588</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>Desperation?</th>
-      <td>-0.4588</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>dupe.</th>
-      <td>-0.3612</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>Ignorable.</th>
-      <td>-0.2500</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
+from this example we can see that the programs precision = 7/10 and its recall = 7/15
 
 
+src: https://tryolabs.com/blog/2013/03/25/why-accuracy-alone-bad-measure-classification-tasks-and-what-we-can-do-about-it/
 
 
-```python
-#TOP 5 most positive:
-postive[:5]
-```
-<p>Top 5 positive:</p>
+### Part 1.3
+Using ``sklearn.metrics.classification_report`` print the result from your
+breast cancer classification from last week. Explain what is going on in at
+least two lines of text.
 
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>compound</th>
-      <th>neg</th>
-      <th>neu</th>
-      <th>pos</th>
-    </tr>
-    <tr>
-      <th>text</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>nice!</th>
-      <td>0.4753</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>yes</th>
-      <td>0.4019</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>True</th>
-      <td>0.4215</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>hilarious!\n</th>
-      <td>0.4574</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>haha, cute.\n</th>
-      <td>0.7184</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-    </tr>
-  </tbody>
-</table>
+## Part 2: Population and t-test
+Using the data from ``brain_size.csv``, we would like to learn something
+about the height of the people in the dataset and how it compares to the
+danish and american population.
 
-## Part 2
-<p>Forudsætter at part 1 er kørt først</p>
+The data is taken from the scipy example at
+http://www.scipy-lectures.org/packages/statistics/index.html#student-s-t-test-the-simplest-statistical-test
 
-```python
-df = pd.DataFrame(scores)
+### Part 2.1
+Write at least two lines about what a t-test can tell you and what the P-value
+can be used for.
 
-X = np.array(df[['pos','neg']])
-y = np.array(df['neg'])
-```
+### Part 2.2
+It turns out that the [average danish height is around 1.8 meters (71 inches)](https://en.wikipedia.org/wiki/List_of_average_human_height_worldwide).
+Run a t-test using ``scipy.stats.ttest_1samp`` on the height of the people
+in the dataset, assuming the mean height in the population is 71 inches.
+Report the output and, using at least two lines of text, describe what the
+numbers tells us.
 
-```python
-from sklearn import preprocessing
+### Part 2.3
+Americans is generally a little lower than danes. It turns out they are [roughly
+around 174 cm (68.4 inches) tall](https://ourworldindata.org/human-height/).
+Run the same t-test as before, but assuming that the average height of the
+population now is 68.4 inches.
+Report the output and, using at laest two lines of text, describe what the
+numbers tells us, and why they are different from the numbers from before.
 
-lab_enc = preprocessing.LabelEncoder()
-y = lab_enc.fit_transform(y)
-```
+## Part 3 (OPTIONAL): Training a perceptron network
+Using the breast cancer dataset to predict whether a tumor is benign or
+malignant, try to train a perceptron network (using
+``sklearn.linear.Perceptron``) instead of your logistic model.
 
+Don't forget to either split the dataset using a 80/20 training/testing split
+or to use K-fold cross-validation (K is usually 10).
 
-```python
-from sklearn.neighbors import KNeighborsClassifier
-model = KNeighborsClassifier()
-model.fit(X,y)
-```
+### Part 3.1
+Write two lines about what is going on in the perceptron network.
 
-```python
-import sklearn.metrics as metrics
-metrics.accuracy_score(y, model.predict(X))
-```
-**Accuracy Score:**
-
-    0.78959999999999997
-
-## Part 3
-
-```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-%matplotlib inline
-import folium
-```
-
-```python
-df = pd.read_csv('assignments/assignment_7/boliga.zip', compression='zip')
-df.head()
-```
-
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>Index</th>
-      <th>_1</th>
-      <th>address</th>
-      <th>zip_code</th>
-      <th>price</th>
-      <th>sell_date</th>
-      <th>sell_type</th>
-      <th>price_per_sq_m</th>
-      <th>no_rooms</th>
-      <th>housing_type</th>
-      <th>size_in_sq_m</th>
-      <th>year_of_construction</th>
-      <th>price_change_in_pct</th>
-      <th>lon</th>
-      <th>lat</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>Ved Volden 5, 5. TV</td>
-      <td>1425 København K</td>
-      <td>4000000</td>
-      <td>23-05-2017</td>
-      <td>Alm. Salg</td>
-      <td>43956.0</td>
-      <td>3.0</td>
-      <td>Lejlighed</td>
-      <td>91.0</td>
-      <td>1938.0</td>
-      <td>0.0</td>
-      <td>12.593629</td>
-      <td>55.671769</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Rådhusstræde 4C, 1</td>
-      <td>1466 København K</td>
-      <td>4895000</td>
-      <td>18-05-2017</td>
-      <td>Alm. Salg</td>
-      <td>46619.0</td>
-      <td>3.0</td>
-      <td>Lejlighed</td>
-      <td>105.0</td>
-      <td>1796.0</td>
-      <td>0.0</td>
-      <td>12.573689</td>
-      <td>55.676839</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>2</td>
-      <td>2</td>
-      <td>Store Kongensgade 112A, 3</td>
-      <td>1264 København K</td>
-      <td>250000</td>
-      <td>15-05-2017</td>
-      <td>Andet</td>
-      <td>1851.0</td>
-      <td>2.0</td>
-      <td>Lejlighed</td>
-      <td>135.0</td>
-      <td>1860.0</td>
-      <td>0.0</td>
-      <td>12.590441</td>
-      <td>55.687079</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>3</td>
-      <td>3</td>
-      <td>Amaliegade 13G, 2</td>
-      <td>1256 København K</td>
-      <td>7375000</td>
-      <td>15-05-2017</td>
-      <td>Alm. Salg</td>
-      <td>75255.0</td>
-      <td>3.0</td>
-      <td>Lejlighed</td>
-      <td>98.0</td>
-      <td>1948.0</td>
-      <td>9.0</td>
-      <td>12.591287</td>
-      <td>55.683439</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>4</td>
-      <td>4</td>
-      <td>Borgergade 144, 3. TH</td>
-      <td>1300 København K</td>
-      <td>5825000</td>
-      <td>10-05-2017</td>
-      <td>Alm. Salg</td>
-      <td>57673.0</td>
-      <td>3.0</td>
-      <td>Lejlighed</td>
-      <td>101.0</td>
-      <td>1854.0</td>
-      <td>3.0</td>
-      <td>12.588744</td>
-      <td>55.687623</td>
-    </tr>
-  </tbody>
-</table>
-
-```python
-location_df = df[['lon','lat','price']]
-location_df = location_df.fillna(0)
-```
-
-```python
-my_map = folium.Map(location=[55.676098, 12.568337], zoom_start=10)
-from folium.plugins import HeatMap
-HeatMap(location_df.values.tolist()).add_to(my_map)
-my_map
-```
+### Part 3.2
+Measure the accuracy of the model. Write two lines: is it better or worse than
+your logistic regression model, and why is it better or worse?
