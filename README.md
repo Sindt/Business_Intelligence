@@ -51,35 +51,13 @@ The data is taken from the scipy example at
 http://www.scipy-lectures.org/packages/statistics/index.html#student-s-t-test-the-simplest-statistical-test
 
 ### Part 2.1
-Write at least two lines about what a t-test can tell you and what the P-value
-can be used for.
+The t test is used to compare means and tells you how significant the differences are. 
+The p value is used with a t value to tell how likely it is that your t value happened by chance. A low p value is good.
 
 ### Part 2.2
-It turns out that the [average danish height is around 1.8 meters (71 inches)](https://en.wikipedia.org/wiki/List_of_average_human_height_worldwide).
-Run a t-test using ``scipy.stats.ttest_1samp`` on the height of the people
-in the dataset, assuming the mean height in the population is 71 inches.
-Report the output and, using at least two lines of text, describe what the
-numbers tells us.
+Ttest_1sampResult(statistic=-3.8682665640568583, pvalue=0.00041658142370520256)
+This result tells us that the sample mean deviates from the null hypothesis by -3.8682665640568583. The pvalue tells us that there is a 0.041658142370520256% chance that the result happened by chance.
 
 ### Part 2.3
-Americans is generally a little lower than danes. It turns out they are [roughly
-around 174 cm (68.4 inches) tall](https://ourworldindata.org/human-height/).
-Run the same t-test as before, but assuming that the average height of the
-population now is 68.4 inches.
-Report the output and, using at laest two lines of text, describe what the
-numbers tells us, and why they are different from the numbers from before.
-
-## Part 3 (OPTIONAL): Training a perceptron network
-Using the breast cancer dataset to predict whether a tumor is benign or
-malignant, try to train a perceptron network (using
-``sklearn.linear.Perceptron``) instead of your logistic model.
-
-Don't forget to either split the dataset using a 80/20 training/testing split
-or to use K-fold cross-validation (K is usually 10).
-
-### Part 3.1
-Write two lines about what is going on in the perceptron network.
-
-### Part 3.2
-Measure the accuracy of the model. Write two lines: is it better or worse than
-your logistic regression model, and why is it better or worse?
+Ttest_1sampResult(statistic=0.1964197529935458, pvalue=0.84532834985133909)
+This result tells us that the sample mean deviates from the null hypothesis by 0.1964197529935458. The pvalue tells us that there is a 84.532834985133909% chance that the result happened by chance. This is very high.
