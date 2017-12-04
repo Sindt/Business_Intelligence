@@ -43,12 +43,21 @@ breast cancer classification from last week. Explain what is going on in at
 least two lines of text.
 
 ## Part 2: Population and t-test
-Using the data from ``brain_size.csv``, we would like to learn something
-about the height of the people in the dataset and how it compares to the
-danish and american population.
 
-The data is taken from the scipy example at
-http://www.scipy-lectures.org/packages/statistics/index.html#student-s-t-test-the-simplest-statistical-test
+```python
+from scipy import stats
+import pandas as pd
+
+df = pd.read_csv('D:/Kasper/School/soft2017fall-business-intelligence-teaching-material/assignments/assignment_8/brain_size.csv', delimiter=';')
+
+data = df['Height']
+
+results = list(map(float, data))
+#Danish
+print(stats.ttest_1samp(data, 71))
+#American
+print(stats.ttest_1samp(data, 68.4))
+```
 
 ### Part 2.1
 The t test is used to compare means and tells you how significant the differences are. 
