@@ -2,8 +2,13 @@
 #### Gruppe: Kasper Olesen, Kasper Pontoppidan & Christian Sindt
 
 ## Assignment 1: Environment Setup and Introduction to Python
-
-
+```ruby 
+Vagrant.configure("2") do |config|
+  config.vm.provider "docker" do |d|
+    d.image = "foo/bar"
+  end
+end
+```
 ### 1. List the all files that this program generates:
 IN:
 ```python
